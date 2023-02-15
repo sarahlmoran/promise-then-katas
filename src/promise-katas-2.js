@@ -61,7 +61,14 @@ const dog = async () => {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 //
 
-const joke = () => {};
+const joke = async () => {
+    const responses = await Promise.all([fetch('jokes', 'question'),fetch('jokes')]);
+    console.log(responses)
+    return {
+        question: responses[0].joke,
+        answer: responses[1].answer
+    }
+};
 
 module.exports = {
     food,
